@@ -1,10 +1,71 @@
 import React from 'react'
+import styled from 'styled-components';
+import MenuIcon from '@material-ui/icons/Menu';
 
 function Header() {
     return (
-        <div>
-        </div>
+        <Container>
+            <a>
+                <img src="/images/logo.svg" alt="Tesla Logo" />
+            </a>
+            <Menu>
+                <a href="#">Modle S</a>
+                <a href="#">Modle 3</a>
+                <a href="#">Modle X</a>
+                <a href="#">Modle Y</a>
+            </Menu>
+            <SideMenu>
+                <a href="#">Shop</a>
+                <a href="#">Tesla Account</a>
+                <CustomMenu />
+            </SideMenu>
+        </Container>
     )
 }
 
 export default Header;
+
+const Container = styled.div`
+    min-height: 60px;
+    position: fixed;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding:  20px;
+    top: 0;
+    left: 0;
+    right: 0;
+`;
+
+const Menu = styled.div`
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    
+    a {
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 0 10px;
+        flex-wrap: nowrap;
+    }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+`;
+
+const SideMenu = styled.div`
+    display: flex;
+    align-items: center;
+    a {
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-right:10px;
+        flex-wrap: nowrap;
+    }
+`;
+
+const CustomMenu = styled(MenuIcon)`
+    cursor: pointer;
+`;
