@@ -85,4 +85,8 @@ const RevealButton = styled.img`
     cursor: pointer;
 `;
 
-const ButtonContainer = styled.div``;
+const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;

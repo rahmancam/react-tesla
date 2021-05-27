@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { selectCars } from '../features/car/carSlice';
+import { useSelector } from 'react-redux';
+
 function Header() {
 
     const [menuOpenStatus, setMenOpenStatus] = useState(false);
+    const cars = useSelector(selectCars);
 
     const toggleMenu = () => {
         setMenOpenStatus(() => {
@@ -19,10 +23,9 @@ function Header() {
                 <img src="/images/logo.svg" alt="Tesla Logo" />
             </a>
             <Menu>
-                <a href="#">Modle S</a>
-                <a href="#">Modle 3</a>
-                <a href="#">Modle X</a>
-                <a href="#">Modle Y</a>
+                {cars.map((car, index) => {
+                    return <a href="#" key={index}>{car}</a>
+                })}
             </Menu>
             <SideMenu>
                 <a href="#">Shop</a>
@@ -33,6 +36,9 @@ function Header() {
                 <SideMenuButtons>
                     <CloseButon onClick={toggleMenu} />
                 </SideMenuButtons>
+                {cars.map((car, index) => {
+                    return <li><a href="#" key={index}>{car}</a></li>
+                })}
                 <li><a href="#">Existing Inventory</a></li>
                 <li><a href="#">Used Inventory</a></li>
                 <li><a href="#">Trade-in</a></li>
